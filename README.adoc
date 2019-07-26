@@ -18,7 +18,7 @@ After this is running, switch to `test-with-LdapAuth` project and do `./gradlew 
 
 == Notes
 
-Create a config file in: `./settings.json` also needed for testing. (or copy it from `ldap-server/config/settings.json.dist`)
+Create a config file in: `./settings.json` also needed for testing. (or copy and adopt it from `ldap-server/config/settings.json.dist`)
 
 ```
 {

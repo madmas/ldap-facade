@@ -203,7 +203,7 @@ const bindHandler = function( req, res, next ) {
         }
     } else {
         const extractedId = username.split(",")[ 0 ].replace("cn=", "");
-        logger.info("Login attempt with identifier: ", extractedId );
+        logger.info("Login attempt with identifier:", extractedId );
         models.Users.find({
             where: {
                 mbox: extractedId
@@ -242,7 +242,7 @@ const searchHandler = function( req, res, next ) {
         const split = searchDn.split(",");
         context = split[ split.length - 2 ].replace("dc=", "").trim();
     }
-    logger.info("context set for search: ", context );
+    logger.info("context set for search:", context );
 
     models.Users.findAll(
         {
