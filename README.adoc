@@ -49,3 +49,9 @@ Create a config file in: `./settings.json` also needed for testing. (or copy and
 
 
   Read about LDAP attributes: http://www.computerperformance.co.uk/Logon/LDAP_attributes_active_directory.htm
+
+
+== Contributors
+
+* Felix (https://github.com/fliiiix)
+* Markus (https://github.com/madmas)
