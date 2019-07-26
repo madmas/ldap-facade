@@ -1,0 +1,51 @@
+= LDAP MySQL Facade
+
+This is a LDAP Facade for a MySQL user table as its often used in a mail server setup.
+
+Implemented in node, based on https://github.com/mattvoss/ldap-server
+
+== Docker
+
+=== Tests
+
+run `docker-compose build` and `docker-compose up` to build and start
+
+* a container with the application
+* a container with a sample db (copy of our mail db)
+* a container with redmine, to demonstrate / test the ldap integration
+
+After this is running, switch to `test-with-LdapAuth` project and do `./gradlew test` to run the tests implemented with the ldap-auth library.
+
+== Notes
+
+Create a config file in: `./settings.json` also needed for testing. (or copy it from `ldap-server/config/settings.json.dist`)
+
+```
+{
+  "mysql":{
+    "host"     : "db-mail",
+    "username" : "mail",
+    "password" : "mailp4ss",
+    "database" : "mail",
+    "multipleStatements": true,
+    "userTable": "user"
+  },
+  "ldap": {
+    "port": 1389,
+    "cert": "",
+    "key": "",
+    "dn": "dc=example,dc=com",
+    "ou": "ou=people",
+    "admin": {
+      "user": "username",
+      "password": "password"
+    }
+  }
+}
+```
+
+
+  ldapsearch -H ldap://localhost:1389 -x -D cn=user@example.com,ou=people,dc=example,dc=com -w test -LLL -b "ou=people,dc=example,dc=com" "objectclass=*"
+
+
+  Read about LDAP attributes: http://www.computerperformance.co.uk/Logon/LDAP_attributes_active_directory.htm

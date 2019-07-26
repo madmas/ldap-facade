@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db-mail:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: m4il
+      MYSQL_USER: mail
+      MYSQL_PASSWORD: mailp4ss
+      MYSQL_DATABASE: mail
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+
+  node:
+    build: ldap-server
+    environment:
+      - NODE_ENV=production
+    tty: true
+    volumes:
+      - ./settings.json:/usr/src/app/config/settings.json
+    ports:
+      - "127.0.0.1:1389:1389"

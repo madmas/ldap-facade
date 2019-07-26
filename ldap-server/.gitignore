@@ -1,0 +1,13 @@
+node_modules/
+bower_components/
+lib/
+config/settings.json
+config/analytics.txt
+access.log
+public/
+tmp/
+ldap-server.log
+.idea
+npm-debug.log
+package-lock.json
+.gradle
